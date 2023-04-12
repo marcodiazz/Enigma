@@ -1,8 +1,10 @@
 <script lang="ts">
   import { each } from "svelte/internal";
+  import Attemp from "./lib/Attemp.svelte";
+  import Input from "./lib/Input.svelte";
 
   const target: number[] = [];
-  let attemp: number[] = [];
+  export let attemp: number[] = [];
   let contBelongs: number = 0;
   let contCorrect: number = 0;
   let numAttemps: number = 0
@@ -45,38 +47,9 @@ generateNumber();
 <main>
 
   <h1>Enigma</h1>
-  <div class="container">
 
     <!-- PRIMER INTENTO -->
-    <div class="table-column" id="solucion">
-      <div class="numbercell">
-        <p class="number">{attemp[0]}</p>
-      </div>
-      <div class="numbercell">
-        <p class="number">{attemp[1]}</p>
-      </div>
-      <div class="numbercell">
-        <p class="number">{attemp[2]}</p>
-      </div>
-      <div class="numbercell">
-        <p class="number">{attemp[3]}</p>
-      </div>
-      <div class="numbercell">
-        <p class="number">{attemp[4]}</p>
-      </div>
-      
-    </div>
-    <div class="table-column" id="belongs">
-      <p class="numbercell number">{contBelongs}</p>
-    </div>
-    <div class="table-column" id="correct">
-      <p class="numbercell number">{contCorrect}</p>
-    </div>
-    <!-- SEGUNDO INTENTO -->
-  </div>
   <div class="container">
-
-      <!-- SEGUNDO INTENTO -->
     <div class="table-column" id="solucion">
       <div class="numbercell">
         <p class="number">{attemp[0]}</p>
@@ -102,34 +75,7 @@ generateNumber();
       <p class="numbercell number">{contCorrect}</p>
     </div>
   </div>
-
-  <div class="container">
-    <!-- TERCER INTENTO -->
-  <div class="table-column" id="solucion">
-    <div class="numbercell">
-      <p class="number">{attemp[0]}</p>
-    </div>
-    <div class="numbercell">
-      <p class="number">{attemp[1]}</p>
-    </div>
-    <div class="numbercell">
-      <p class="number">{attemp[2]}</p>
-    </div>
-    <div class="numbercell">
-      <p class="number">{attemp[3]}</p>
-    </div>
-    <div class="numbercell">
-      <p class="number">{attemp[4]}</p>
-    </div>
-    
-  </div>
-  <div class="table-column" id="belongs">
-    <p class="numbercell number">{contBelongs}</p>
-  </div>
-  <div class="table-column" id="correct">
-    <p class="numbercell number">{contCorrect}</p>
-  </div>
-</div>
+  
 
 
   <div class="input">
