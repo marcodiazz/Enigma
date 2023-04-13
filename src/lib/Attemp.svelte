@@ -1,27 +1,10 @@
 <script lang="ts">
 
-export let target: number[] = [];
-export let attemp: number[] = [];
+// export let target: number[] = [];
+export let attemp: any[] = [];
 export let contBelongs: number = 0;
 export let contCorrect: number = 0;
-let numAttemps: number = 0;
 
-
-function compareNumbers(){
-    let targetCopy = target;
-    let found: boolean = false;
-    for(let i=0; i<5; i++){
-      found = false;
-      if(attemp[i] == target[i]) contCorrect++;
-      for(let j=0; j<5 && !found; j++){
-        if (attemp[i] == targetCopy[j]){
-          contBelongs++;
-          targetCopy[j] = -1;
-          found = true;
-        } 
-      }
-    }
-  }
 </script>
 
 <div class="container">
@@ -29,19 +12,39 @@ function compareNumbers(){
   <!-- PRIMER INTENTO -->
   <div class="table-column" id="solucion">
     <div class="numbercell">
+      {#if attemp[0] == undefined}
+      <p class="number">_</p>
+      {:else}
       <p class="number">{attemp[0]}</p>
+      {/if}
     </div>
     <div class="numbercell">
+      {#if attemp[1] == undefined}
+      <p class="number">_</p>
+      {:else}
       <p class="number">{attemp[1]}</p>
+      {/if}
     </div>
     <div class="numbercell">
+      {#if attemp[2] == undefined}
+      <p class="number">_</p>
+      {:else}
       <p class="number">{attemp[2]}</p>
+      {/if}
     </div>
     <div class="numbercell">
+      {#if attemp[3] == undefined}
+      <p class="number">_</p>
+      {:else}
       <p class="number">{attemp[3]}</p>
+      {/if}
     </div>
     <div class="numbercell">
+      {#if attemp[4] == undefined}
+      <p class="number">_</p>
+      {:else}
       <p class="number">{attemp[4]}</p>
+      {/if}
     </div>
     
   </div>
@@ -64,8 +67,8 @@ function compareNumbers(){
 }
 
 .table-column{
-  margin-inline: 8rem;
-  margin-top: 4rem;
+  margin-inline: 3rem;
+  margin-top: 1rem;
 }
 
 #solucion{
@@ -75,12 +78,13 @@ function compareNumbers(){
 }
 
 .numbercell{
-  padding: 20px;
-  width: 30px;
-  height: 30px;
+  padding: 10px;
+  width: 2rem;
+  height: 2rem;
   background-color: #595959;
   border-radius: 10px;
-  margin: 10px;
+  margin-top: 5px;
+  margin-inline: 5px;
 
 }
 
