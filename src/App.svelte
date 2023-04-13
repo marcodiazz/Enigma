@@ -20,9 +20,21 @@
   return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
+  function numberInArray(number:number, array:number[]){
+    for(let i=0; i<array.length; i++){
+      if(number == array[i]){
+        return true;
+      }
+    }
+    return false; 
+  }
   function generateNumber() {
+    let randomNumber: number = randomInt(0,9);
     for(let i=0; i<5; i++){
-      target.push(randomInt(0,9));
+      while(numberInArray(randomNumber, target)){
+        randomNumber = randomInt(0,9);
+      }
+      target.push(randomNumber);
     }
   }
 
@@ -34,8 +46,6 @@
     let targetCopy = [].concat(target);
     let found: boolean = false;
     for(let i=0; i<5; i++){
-     
-      console.log(attemp[numAttemps] + typeof(attemp[numAttemps]))
       found = false;
       if(attemp[numAttemps][i] == target[i]) contCorrect[numAttemps]++;
       for(let j=0; j<5 && !found; j++){
@@ -50,8 +60,6 @@
     numAttemps++;
   }
 
-  console.log(target)
-
 startArray();
 generateNumber();
 
@@ -60,7 +68,10 @@ generateNumber();
 
 
 <main>
-  <h1>Enigma</h1>
+  <div id="titleContainer">
+    <h1 id="title">Enigma</h1>
+  </div>
+  
   <div class="gameScreen center-column">
     {#if !win && numAttemps < 6}
       <Attemp attemp={attemp[0]} contBelongs={contBelongs[0]} contCorrect={contCorrect[0]}/>
@@ -83,9 +94,10 @@ generateNumber();
       <div class="input">
         <form class="center-column">
           <label for="attemp">Insert a number:</label>
-          <input bind:value={attemp[numAttemps]} id="attemp">
+          <input bind:value={attemp[numAttemps]} id="attemp" maxlength="5" type="number">
           <button id="sub" on:click|preventDefault={compareNumbers}>Submit</button>
         </form>
+        <p>coded with 🤍 by Marco Díaz</p>
       </div>
       <!-- <p>{target}</p> -->
       {:else if (!win &&numAttemps >= 5)}
@@ -118,11 +130,27 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center; */
+  height: 100vh;
+  
+}
+#titleContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* .gameScreen{
-  margin-top: 5rem;
-} */
+#title{
+  font-family: 'Chivo Mono', monospace;
+  font-weight: 400;
+  font-size: 4rem;
+  color: white;
+  margin-right: 1rem;
+}
+.gameScreen{
+  /* margin-top: 5rem; */
+  height: 80%;
+  
+}
 
 .center-column{
     display: flex;
@@ -139,16 +167,25 @@ main{
   .input input{
     height: 2.5rem;
     font-size: 1.2rem;
+    text-align: center;
+    border: 2px solid #646cff;
+    border-radius: 10px;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
   #sub{
-    margin-top: 1rem;
+    margin-top: 2rem;
+    border-color: #646cff;
   }
 
   button {
   border-radius: 8px;
   border: 2px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  padding: 0.6em 2em;
+  font-size: 1.5rem;
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
@@ -156,7 +193,8 @@ main{
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: #646cff;
+  background: #646cff;
+  transition: 0.5s;
 }
 button:focus,
 button:focus-visible {
@@ -164,16 +202,19 @@ button:focus-visible {
 }
 
   .menu{
+    width: 40vw;
     border-radius: 20px;
     padding-block: 3rem;
-    padding-inline: 4rem;
+    /* padding-inline: 4rem; */
   }
   #winMenu{
-    background-color: #3d7241;
+    /* background-color: #3d7241; */
+    background: linear-gradient(156deg, rgba(0,114,255,1) 0%, rgba(0,198,255,1) 100%);
   }
 
   #loseMenu{
-    background-color: #731c1c;
+    /* background-color: #731c1c; */
+    background: linear-gradient(156deg, rgba(179,18,23,1) 0%, rgba(229,45,39,1) 100%);
   }
 
 

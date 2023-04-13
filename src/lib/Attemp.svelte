@@ -68,7 +68,7 @@ export let contCorrect: number = 0;
 
 .table-column{
   margin-inline: 3rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 #solucion{
@@ -96,10 +96,12 @@ export let contCorrect: number = 0;
 }
 
 #belongs p{
-  background: #aa8c03;
+  /* background: #aa8c03; */
+  background: linear-gradient(156deg, rgba(247,151,30,1) 0%, rgba(255,210,0,1) 100%);
 }
 #correct p{
-  background: #03aa11;
+  /* background: #03aa11; */
+  background: linear-gradient(156deg, rgba(17,153,142,1) 0%, rgba(56,239,125,1) 100%);
 }
 
 
